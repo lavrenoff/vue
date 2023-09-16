@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="app">
+            <table>
+                <tr>
+                    <td>Товар</td>
+                    <td>Цена</td>
+                </tr>
+                <tr v-for="item in products">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.price }}</td>
+                </tr>
+            </table>
+            <button @click="sortup()">Сортировать по возрастанию по цене</button>
+            <button @click="sortdown()">Сортировать по убыванию по цене</button>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script>
+      new Vue ({
+          el:'.app',
+          data: {
+            products:[{
+                name:'Москвич',
+                price:10000
+            },
+            {
+                name:'Nissan',
+                price:1000
+            },
+              {
+                name:'Mercedes',
+                price:200000
+              }
+              ]
+      },
+      methods:{
+        sortup(){
+            this.products.sort((a, b) => a.price > b.price ? 1 : -1)
+        },
+        sortdown(){
+            this.products.sort((a, b) => a.price < b.price ? 1 : -1)
+        }
+      }
+      })
+    </script>
+    </body>
+</html>
